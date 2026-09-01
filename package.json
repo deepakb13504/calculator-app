@@ -1,0 +1,14 @@
+{
+  "name": "fullstack-calculator",
+  "version": "1.0.0",
+  "description": "Full-stack calculator with React, Node, and PostgreSQL",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npx nodemon server.js",
+    "start:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
