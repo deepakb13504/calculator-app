@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.json());
 
 // Get all calculations
+app.get("/", (req, res) => {
+  res.send("Calculator Backend is Running 🚀");
+});
+
 app.get('/api/calculations', async (req, res) => {
   try {
     const calculations = await prisma.calculation.findMany({

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Calculator from './components/Calculator';
 import History from './components/History';
 
-const API_URL = 'http://localhost:5005/api/calculations';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
   const [history, setHistory] = useState([]);
