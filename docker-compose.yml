@@ -1,0 +1,35 @@
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: calculator-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Deepak@123
+      POSTGRES_DB: calculator
+    volumes:
+      - calculator-data:/var/lib/postgresql/data
+
+  backend:
+    image: deepakvasaaanthi/calculator-backend:latest
+    container_name: calculator-backend
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "5005:5005"
+    env_file:
+      - backend/.env
+
+  frontend:
+    image: deepakvasaaanthi/calculator-frontend:latest
+    container_name: calculator-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+
+volumes:
+  calculator-data:
